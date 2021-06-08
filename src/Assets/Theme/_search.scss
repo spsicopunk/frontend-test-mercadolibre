@@ -1,0 +1,71 @@
+.search-box{
+  background: $yellow;
+  padding: 10px 0px;
+  .search-box_header{
+    @include cont-center-flex;
+    margin: 0 auto;
+    .search-box_link{
+      height: 36px;
+      width: 53px;
+      .search-box_logo{
+        width: 100%;
+      }
+    }
+    .search-box_input_box{
+      display: flex;
+      align-items: center;
+      width: calc(100% - 80px);
+      .search-box_input_search{
+        color: $black;
+        border: none;
+        transition: all .3s;
+        padding: 0 20px;
+        border-radius: 4px 0px 0px 4px;
+        font:$inputText;
+        width: 100%;
+        height: 38px;
+        &:focus, &:focus-visible{
+          outline: none;
+        }
+      }
+      .search-box_button {
+        background: $grayLight;
+        border: none;
+        width: 42px;
+        height: 36px;
+        display: table;
+        cursor: pointer;
+        border-radius: 0px 4px 4px 0px;
+        box-sizing: content-box;
+        .search-box_icon_btn {
+          width: 18px;
+          margin-top: 4px;
+        }
+      }
+    }
+  }
+}
+/// breadcrumbs
+.breadcrumbs{
+  @include cont-center-flex;
+  margin: 16px auto;
+  .breadcrumbs_list{
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+    li{
+      display: inline-block;
+      font: $textBreadcrumb;
+      color: $graySecondary;
+      margin-right: 10px;
+      cursor: pointer;
+      .breadcrumbs_add-on {
+        margin-left: 5px;
+        font-family: monospace;
+      }
+      &.bread_active{
+        font: $textBreadcrumbActive;
+      }
+    }
+  }
+}

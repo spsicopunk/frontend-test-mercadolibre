@@ -1,0 +1,54 @@
+.products{
+  @include cont-center-flex(column, start);
+  @extend .box-primary;
+  margin: 0 auto;
+  .products_item{
+    display: flex;
+    width: 100%;
+    margin: 16px;
+    cursor: pointer;
+    border-bottom: 1px solid $grayLight;
+    .products_portrait{
+      border-radius: 4px;
+      overflow: hidden;
+      display: table;
+      width: 180px;
+      height: 180px;
+      margin-right: 16px;
+      object-fit: cover;
+    }
+    .products_box-text{
+      .products_title{
+        font: $title;
+        margin: 1rem 0px;
+        color: $black;
+        .products_add-on{
+          width: 18px;
+          position: relative;
+          top: 1px;
+        }
+      }
+      .products_description{
+        font: $inputText;
+        color: $black;
+      }
+    }
+    &:last-child{
+      border: none;
+    }
+    .products_left{
+      display: flex;
+      width: calc(100% - 190px);
+    }
+    .products_right{
+      width: 120px;
+      .products_tag{
+        display: block;
+        margin: 1rem 0px;
+        padding: 0 10px;
+        color: $gray;
+        font: $textTag;
+      }
+    }
+  }
+}

@@ -1,29 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-import './Theme/theme.scss'
-
-
-export const baseURL = process.env.REACT_APP_TITLE;
-
-
+import React from 'react';
+import { Route, Switch ,BrowserRouter as Router } from "react-router-dom";
+import Home from "./Pages/Home";
+import Detail from "./Pages/Detail_Products";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>{baseURL}<code> src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="fulanito"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+          <Switch>
+              <Route path="/detalle" component={ Detail }/>
+              <Route path="/" exact component={ Home }/>
+          </Switch>
+      </Router>
   );
 }
 

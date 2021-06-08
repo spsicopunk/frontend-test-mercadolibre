@@ -1,0 +1,108 @@
+//---------------- Colors ------------------------
+
+$yellow: #FFE600;
+$black: #333333;
+$gray: #666666;
+$graySecondary: #999999;
+$grayLight: #EEEEEE;
+$blue: #3483FA;
+$white: #FFFFFF;
+
+//---------------- Fonts ------------------------
+
+
+//Proxima-Nova-Light
+
+$FontLight: 'Proxima-Nova-Light';
+$FL-Path-woff2: '../Fonts/proxima-nova-light/proxima-nova-light.woff2';
+$FL-Path-woff: '../Fonts/proxima-nova-light/proxima-nova-light.woff';
+
+@font-face {
+  font-family: $FontLight;
+  src: url($FL-Path-woff2) format('woff2'),
+  url($FL-Path-woff) format('woff');
+  font-style: normal;
+  font-display: swap;
+}
+
+//Proxima-Nova-Regular
+
+$FontRegular: 'Proxima-Nova-Regular';
+$FR-Path-woff2: '../Fonts/proxima-nova-regular/proxima-nova-regular.woff2';
+$FR-Path-woff: '../Fonts/proxima-nova-regular/proxima-nova-regular.woff';
+
+@font-face {
+  font-family: $FontRegular;
+  src: url($FR-Path-woff2) format('woff2'),
+  url($FR-Path-woff) format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+//Proxima-Nova-Semi-Bold
+
+$FontSemi: 'Proxima-Nova-Semi-Bold';
+$FS-Path-woff2: '../Fonts/proxima-nova-semi/proxima-nova-semibold.woff2';
+$FS-Path-woff: '../Fonts/proxima-nova-semi/proxima-nova-semibold.woff';
+
+@font-face {
+  font-family: $FontSemi;
+  src: url($FS-Path-woff2) format('woff2'),
+  url($FS-Path-woff) format('woff');
+  font-style: normal;
+  font-display: swap;
+}
+
+//Proxima-Nova-Bold
+
+$FontBold: 'Proxima-Nova-Bold';
+$FB-Path-woff2: '../Fonts/proxima-nova-bold/proxima-nova-bold.woff2';
+$FB-Path-woff: '../Fonts/proxima-nova-bold/proxima-nova-bold.woff';
+
+@font-face {
+  font-family: $FontBold;
+  src: url($FB-Path-woff2) format('woff2'),
+  url($FB-Path-woff) format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+//---------------- Texts and Labels ------------------------
+
+$jumboTitle: 46px/1.3 $FontRegular;
+$titleDescription: 28px/1.3 $FontRegular;
+$title: 24px/1.3 $FontRegular;
+$inputText: 18px/1.3 $FontRegular;
+$textDescription: 16px/1.3 $FontRegular;
+$textBreadcrumb: 14px/1.3 $FontRegular;
+$textBreadcrumbActive: 14px/1.3 $FontSemi;
+$textTag: 12px/1.3 $FontRegular;
+
+//---------------- Background ------------------------
+
+body{
+  background: $grayLight;
+  font: $textDescription;
+  margin: 0px;
+}
+
+//---------------- Containers ------------------------
+
+@mixin cont-center-flex ($direction:row, $alignItems:center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: space-between;
+  align-items: $alignItems;
+  max-width: 980px;
+  width: 90%;
+}
+
+//---------------- Boxes ------------------------
+
+.box-primary{
+  background: $white;
+  border-radius: 4px 4px;
+}
