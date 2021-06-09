@@ -75,6 +75,7 @@ $FB-Path-woff: '../Fonts/proxima-nova-bold/proxima-nova-bold.woff';
 $jumboTitle: 46px/1.3 $FontRegular;
 $titleDescription: 28px/1.3 $FontRegular;
 $title: 24px/1.3 $FontRegular;
+$titleBold: 24px/1.3 $FontBold;
 $inputText: 18px/1.3 $FontRegular;
 $textDescription: 16px/1.3 $FontRegular;
 $textBreadcrumb: 14px/1.3 $FontRegular;
@@ -91,10 +92,10 @@ body{
 
 //---------------- Containers ------------------------
 
-@mixin cont-center-flex ($direction:row, $alignItems:center) {
+@mixin cont-center-flex ($direction:row, $alignItems:center, $justify:space-between) {
   display: flex;
   flex-direction: $direction;
-  justify-content: space-between;
+  justify-content: $justify;
   align-items: $alignItems;
   max-width: 980px;
   width: 90%;
@@ -105,4 +106,27 @@ body{
 .box-primary{
   background: $white;
   border-radius: 4px 4px;
+}
+
+//---------------- Buttons ------------------------
+.btns{
+  height: 40px;
+  text-decoration: none;
+  text-align: center;
+  max-width: 220px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font: $textDescription;
+  transition: all .3s;
+  &.btns_primary{
+    background: $blue;
+    color: $white;
+    &:hover{
+      background: $yellow;
+      color: $black;
+    }
+  }
 }

@@ -1,11 +1,11 @@
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
 //images
 
 import ImgProduct1 from "../Assets/Img/pictures_mini/4.png";
 import Addon from "../Assets/Img/envio.png";
 
-function Items() {
+const Items = ({ location }) => {
+
     return (
         <div className="products">
             <div className="products_item">

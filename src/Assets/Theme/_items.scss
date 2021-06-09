@@ -1,12 +1,13 @@
 .products{
   @include cont-center-flex(column, start);
   @extend .box-primary;
-  margin: 0 auto;
+  margin: 0 auto 32px;
   .products_item{
     display: flex;
-    width: 100%;
-    margin: 16px;
+    width: calc(100% - 32px);
+    margin: 16px 16px 0px 16px;
     cursor: pointer;
+    padding-bottom: 16px;
     border-bottom: 1px solid $grayLight;
     .products_portrait{
       border-radius: 4px;
@@ -38,7 +39,7 @@
     }
     .products_left{
       display: flex;
-      width: calc(100% - 190px);
+      width: calc(100% - 162px);
     }
     .products_right{
       width: 120px;
