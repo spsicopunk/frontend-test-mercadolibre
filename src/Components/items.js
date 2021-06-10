@@ -1,27 +1,60 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Component } from 'react';
+import request from 'superagent';
+
 //images
 
-import ImgProduct1 from "../Assets/Img/pictures_mini/4.png";
 import Addon from "../Assets/Img/envio.png";
 
-const Items = ({ location }) => {
+class Items extends Component {
 
-    return (
-        <div className="products">
-            <div className="products_item">
+    constructor() {
+        super();
+        this.state = {
+            search: [],
+            items: [],
+        }
+    }
+
+    componentWillMount() {
+        request
+            .get('http://localhost:4000/api/search')
+            .end((err, res) => {
+                const search = JSON.parse(res.text).search;
+                const items = JSON.parse(res.text).search[0].items;
+
+                this.setState({
+                    search: search,
+                    items: items
+                });
+            });
+    }
+
+
+    render() {
+        var items = this.state.items.map((res, i) => {
+            return <>
+            <div className="products_item" key={i} rel={res.id}>
                 <div className="products_left">
-                    <img src={ImgProduct1} className="products_portrait" alt="portrait product" />
+                    <img src={res.picture} className="products_portrait" alt="portrait product"/>
                     <div className="products_box-text">
-                        <h3 className="products_title">$ 1.980 <img className="products_add-on" src={Addon} alt="portrait product" /></h3>
-                        <p className="products_description">Apple Ipod Touch 5g 16gb igual A Nuevo<br/> completo Unico!</p>
+                        <h3 className="products_title">$ {res.price.currency} <img className="products_add-on" src={Addon} alt="portrait product"/>
+                        </h3>
+                        <p className="products_description">{res.title}<br/> completo
+                            Unico!</p>
                     </div>
                 </div>
                 <div className="products_right">
-                    <span className="products_tag">Capital Federal</span>
+                    <span className="products_tag">{res.condition}</span>
                 </div>
             </div>
-        </div>
-    )
+            </>
+        });
+        return (
+            <div className="products">
+                {items}
+            </div>
+        )
+    }
 }
 
 
