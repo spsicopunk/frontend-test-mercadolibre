@@ -18,7 +18,7 @@ const Search = ({ location }) => {
         // set language in state
         setLanguage(input);
         // add query string to URL
-        History.push('/items?search=' + input);
+        History.push('/items?q=' + input);
         // clear the input
         setInput('');
     };
