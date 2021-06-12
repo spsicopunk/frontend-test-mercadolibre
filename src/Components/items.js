@@ -1,4 +1,5 @@
-import React, { useState, useEffect, Component } from 'react';
+import React, {  Component } from 'react';
+import {Link, Redirect} from "react-router-dom";
 import request from 'superagent';
 import History from "../Components/history"
 
@@ -45,8 +46,8 @@ class Items extends Component {
     render() {
         var iter = this.state.products.map((res, i) => {
             console.log(res)
-            return     <div className="products_item" key={i} rel={res.id}>
-
+            return <div className="products_item" key={i} rel={res.id}>
+                    <Link to={"/items/"+res.id}></Link>
                     <div className="products_left">
                         <img src={res.picture} className="products_portrait" alt="portrait product"/>
                         <div className="products_box-text">

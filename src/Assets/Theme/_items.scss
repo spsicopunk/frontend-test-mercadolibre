@@ -9,6 +9,7 @@
     cursor: pointer;
     padding-bottom: 16px;
     border-bottom: 1px solid $grayLight;
+    position: relative;
     .products_portrait{
       border-radius: 4px;
       overflow: hidden;
@@ -52,6 +53,11 @@
         color: $gray;
         font: $textTag;
       }
+    }
+    > a{
+      position: absolute;
+      width: 100%;
+      height: 100%;
     }
   }
 }

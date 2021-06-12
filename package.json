@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "start": "react-scripts start",
-    "serve": "node server.js",
-    "dev": " \"nodemon server.js\" \"webpack -w\" ",
+    "serve": "nodemon server.js",
+    "dev": "\"nodemon server.js\" \"webpack -w\" ",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

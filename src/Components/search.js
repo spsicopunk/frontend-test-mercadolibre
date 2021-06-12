@@ -6,7 +6,7 @@ import logo from "../Assets/Img/logo.png";
 import SearchIcon from "../Assets/Img/search.png";
 
 const Search = ({ location }) => {
-    // useState hooks for input and language
+
     const [language, setLanguage] = useState('');
     const [input, setInput] = useState('');
 
@@ -18,7 +18,9 @@ const Search = ({ location }) => {
         // set language in state
         setLanguage(input);
         // add query string to URL
+
         History.push('/items?q=' + input);
+        History.go(0)
         // clear the input
         setInput('');
     };
