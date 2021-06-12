@@ -8,12 +8,21 @@ app.use(cors())
 
 app.use(express.static(__dirname + '/public'));
 
+app.listen(port, function () {
+    console.log(`Corriendo en puerto ${port}`);
+});
 
+/*creación de endpoint para busqueda de productos*/
 app.get("/api/items?:query", (req, res) =>{
     const url = `https://api.mercadolibre.com/sites/MLA/search?${req._parsedOriginalUrl.query}`;
     axios.get(url).then(response => {
         const apiMercadolibre = response.data.results;
         [apiMercadolibre].map(function(obj) {
+            const num0 = 0;
+            const num1 = 1;
+            const num2 = 2;
+            const num3 = 3;
+
             const products = [
                 {
                     "autor": {
@@ -23,56 +32,57 @@ app.get("/api/items?:query", (req, res) =>{
                     description: [String, String, String],
                     item: [
                         {
-                            "id": obj[0].id,
-                            "title": obj[0].title,
+                            "id": obj[num0].id,
+                            "title": obj[num0].title,
                             "price": {
-                                "currency": obj[0].currency_id,
-                                "amount": obj[0].price,
-                                "decimals": obj[0].installments.amount,
+                                "currency": obj[num0].currency_id,
+                                "amount": obj[num0].price,
+                                "decimals": obj[num0].installments.amount
                             },
-                            "picture": obj[0].thumbnail,
-                            "condition": obj[0].condition,
-                            "free_shipping": obj[0].shipping.free_shipping,
+                            "picture": obj[num0].thumbnail,
+                            "condition": obj[num0].condition,
+                            "free_shipping": obj[num0].shipping.free_shipping
                         },
                         {
-                            "id": obj[1].id,
-                            "title": obj[1].title,
+                            "id": obj[num1].id,
+                            "title": obj[num1].title,
                             "price": {
-                                "currency": obj[1].currency_id,
-                                "amount": obj[1].price,
-                                "decimals": obj[1].installments.amount,
+                                "currency": obj[num1].currency_id,
+                                "amount": obj[num1].price,
+                                "decimals": obj[num1].installments.amount
                             },
-                            "picture": obj[1].thumbnail,
-                            "condition": obj[1].condition,
-                            "free_shipping": obj[1].shipping.free_shipping,
+                            "picture": obj[num1].thumbnail,
+                            "condition": obj[num1].condition,
+                            "free_shipping": obj[num1].shipping.free_shipping
                         },
                         {
-                            "id": obj[2].id,
-                            "title": obj[2].title,
+                            "id": obj[num2].id,
+                            "title": obj[num2].title,
                             "price": {
-                                "currency": obj[2].currency_id,
-                                "amount": obj[2].price,
-                                "decimals": obj[2].installments.amount,
+                                "currency": obj[num2].currency_id,
+                                "amount": obj[num2].price,
+                                "decimals": obj[num2].installments.amount
                             },
-                            "picture": obj[2].thumbnail,
-                            "condition": obj[2].condition,
-                            "free_shipping": obj[2].shipping.free_shipping,
+                            "picture": obj[num2].thumbnail,
+                            "condition": obj[num2].condition,
+                            "free_shipping": obj[num2].shipping.free_shipping
                         },
                         {
-                            "id": obj[3].id,
-                            "title": obj[3].title,
+                            "id": obj[num3].id,
+                            "title": obj[num3].title,
                             "price": {
-                                "currency": obj[3].currency_id,
-                                "amount": obj[3].price,
-                                "decimals": obj[3].installments.amount,
+                                "currency": obj[num3].currency_id,
+                                "amount": obj[num3].price,
+                                "decimals": obj[num3].installments.amount
                             },
-                            "picture": obj[3].thumbnail,
-                            "condition": obj[3].condition,
-                            "free_shipping": obj[3].shipping.free_shipping,
+                            "picture": obj[num3].thumbnail,
+                            "condition": obj[num3].condition,
+                            "free_shipping": obj[num3].shipping.free_shipping
                         }
                     ]
                 }
             ]
+
             res.json( {
                 products: products
             })
@@ -81,9 +91,6 @@ app.get("/api/items?:query", (req, res) =>{
 
     })
 })
-
-
-/*[0-4]*/
 
 
 const description = [
@@ -122,6 +129,4 @@ app.get('/api/description', (req, res) => {
 
 
 
-app.listen(port, function () {
-  console.log(`Corriendo en puerto ${port}`);
-});
+

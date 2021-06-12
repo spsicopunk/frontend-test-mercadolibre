@@ -15,7 +15,7 @@ function Detail() {
                 <h1 className="detail_state">Nuevo - 234 vendidos</h1>
                 <h2 className="detail_title-product">Deco Reverse <br/> Sobrero Oxford</h2>
                 <h3 className="detail_price">$ 1.980</h3>
-                <a href="#" className="btns btns_primary">Comprar</a>
+                <a href="/" className="btns btns_primary">Comprar</a>
             </div>
         </section>
     )
