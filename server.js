@@ -8,11 +8,9 @@ app.use(cors())
 
 app.use(express.static(__dirname + '/public'));
 
-app.listen(port, function () {
-    console.log(`Corriendo en puerto ${port}`);
-});
 
 /*creación de endpoint para busqueda de productos*/
+
 app.get("/api/items?:query", (req, res) =>{
     const url = `https://api.mercadolibre.com/sites/MLA/search?${req._parsedOriginalUrl.query}`;
     axios.get(url).then(response => {
@@ -86,46 +84,52 @@ app.get("/api/items?:query", (req, res) =>{
             res.json( {
                 products: products
             })
+            return products;
         });
-    }).catch(error => {
-
     })
 })
 
+/*creación de endpoint para detalle de producto*/
 
-const description = [
-  {
-    "author": {
-      "name": String,
-      "lastname": String
-     },
-      "item": {
-          "id": String,
-          "title": String,
-          "price": {
-            "currency": String,
-            "amount": Number,
-            "decimals": Number,
-          },
-          "picture": String,
-          "condition": String,
-          "free_shipping": Boolean,
-          "sold_quantity": Number,
-          "description": String
-      }
-    }
-];
-
-
-
-app.get('/api/description', (req, res) => {
-  res.json({
-    description: description
-  })
-
+app.get('/api/items/:id', (req, res) => {
+    const paramID = req._parsedOriginalUrl.path.substr(11);
+    const urlID = `https://api.mercadolibre.com/items/${paramID}`;
+    axios.get(urlID).then(response => {
+        const apiMercadolibreItem = response.data;
+        const urlDescription = `https://api.mercadolibre.com/items/${paramID}/description`;
+        axios.get(urlDescription).then(response => {
+            const apiDescription = response.data;
+            const description = {
+                    "author": {
+                        "name": String,
+                        "lastname": String
+                    },
+                    "item": {
+                        "id": apiMercadolibreItem.id,
+                        "title": apiMercadolibreItem.title,
+                        "price": {
+                            "currency": apiMercadolibreItem.currency_id,
+                            "amount": apiMercadolibreItem.price,
+                            "decimals": apiMercadolibreItem.base_price,
+                        },
+                        "picture": apiMercadolibreItem.pictures[0].url,
+                        "condition": apiMercadolibreItem.condition,
+                        "free_shipping": apiMercadolibreItem.shipping.free_shipping,
+                        "sold_quantity": apiMercadolibreItem.sold_quantity,
+                        "description": apiDescription.plain_text
+                    }
+            }
+            res.json({
+                description: description
+            })
+        })
+    })
 });
 
 
+app.listen(port, function () {
+    console.log(`Corriendo en puerto ${port}`);
+});
 
 
 
