@@ -16,12 +16,10 @@ app.get("/api/items?:id", (req, res) =>{
     const paramID = req._parsedOriginalUrl.query;
     const url = `https://api.mercadolibre.com/sites/MLA/search?q=${paramID}`;
     axios.get(url).then(response => {
-         const producto1 = response.data.results[0];
-            console.log(producto1)
-        /*             const num0 = 0;
-                     const num1 = 1;
-                     const num2 = 2;
-                     const num3 = 3;*/
+        const producto1 = response.data.results[0];
+        const producto2 = response.data.results[1];
+        const producto3 = response.data.results[2];
+        const producto4 = response.data.results[3];
 
              const products = [
                  {
@@ -35,13 +33,49 @@ app.get("/api/items?:id", (req, res) =>{
                              "id": producto1.id,
                              "title": producto1.title,
                              "price": {
-                                 "currency": "obj[num0].currency_id",
-                                 "amount": "obj[num0].price",
-                                 "decimals": "obj[num0].installments.amount"
+                                 "currency": producto1.currency_id,
+                                 "amount": producto1.price,
+                                 "decimals": producto1.installments.amount
                              },
-                             "picture": "obj[num0].thumbnail",
-                             "condition": "obj[num0].condition",
-                             "free_shipping": "obj[num0].shipping.free_shipping"
+                             "picture": producto1.thumbnail,
+                             "condition": producto1.condition,
+                             "free_shipping": producto1.shipping.free_shipping
+                         },
+                         {
+                             "id": producto2.id,
+                             "title": producto2.title,
+                             "price": {
+                                 "currency": producto2.currency_id,
+                                 "amount": producto2.price,
+                                 "decimals": producto2.installments.amount
+                             },
+                             "picture": producto2.thumbnail,
+                             "condition": producto2.condition,
+                             "free_shipping": producto2.shipping.free_shipping
+                         },
+                         {
+                             "id": producto3.id,
+                             "title": producto3.title,
+                             "price": {
+                                 "currency": producto3.currency_id,
+                                 "amount": producto3.price,
+                                 "decimals": producto3.installments.amount
+                             },
+                             "picture": producto3.thumbnail,
+                             "condition": producto3.condition,
+                             "free_shipping": producto3.shipping.free_shipping
+                         },
+                         {
+                             "id": producto4.id,
+                             "title": producto4.title,
+                             "price": {
+                                 "currency": producto4.currency_id,
+                                 "amount": producto4.price,
+                                 "decimals": producto4.installments.amount
+                             },
+                             "picture": producto4.thumbnail,
+                             "condition": producto4.condition,
+                             "free_shipping": producto4.shipping.free_shipping
                          }
                      ]
                  }
