@@ -1,7 +1,7 @@
 const axios = require('axios');
 const express = require('express');
 const app = express();
-const port = 4000;
+
 
 const cors = require('cors');
 app.use(cors())
@@ -127,8 +127,5 @@ app.get('/api/items/:id', (req, res) => {
 });
 
 
-app.listen(port, function () {
-    console.log(`Corriendo en puerto ${port}`);
-});
 
 
