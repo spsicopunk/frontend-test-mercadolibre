@@ -2,8 +2,8 @@
   "name": "frontend-test",
   "version": "1.0.0",
   "scripts": {
-    "start": "react-scripts start",
-    "serve": "nodemon server.js",
+    "local": "react-scripts start",
+    "start": "nodemon server.js",
     "dev": "\"nodemon server.js\" \"webpack -w\" ",
     "build": "react-scripts build",
     "test": "react-scripts test",
