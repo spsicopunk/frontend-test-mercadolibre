@@ -13,9 +13,10 @@ app.use(express.static(__dirname + '/public'));
 /*creación de endpoint para busqueda de productos*/
 
 app.get("/api/items?:id", (req, res) =>{
-    const url = `https://api.mercadolibre.com/sites/MLA/search?${req._parsedOriginalUrl.query}`;
-     axios.get(url).then(response => {
-         console.log(response.data)
+    const paramID = req._parsedOriginalUrl.query;
+    const url = `https://api.mercadolibre.com/sites/MLA/search?${paramID}`;
+    axios.get(url).then(response => {
+         console.log(response.data.results)
          const apiMercadolibre = response.data.results;
 /*             const num0 = 0;
              const num1 = 1;
@@ -41,43 +42,7 @@ app.get("/api/items?:id", (req, res) =>{
                              "picture": "obj[num0].thumbnail",
                              "condition": "obj[num0].condition",
                              "free_shipping": "obj[num0].shipping.free_shipping"
-                         },
-/*                         {
-                             "id": obj[num1].id,
-                             "title": obj[num1].title,
-                             "price": {
-                                 "currency": obj[num1].currency_id,
-                                 "amount": obj[num1].price,
-                                 "decimals": obj[num1].installments.amount
-                             },
-                             "picture": obj[num1].thumbnail,
-                             "condition": obj[num1].condition,
-                             "free_shipping": obj[num1].shipping.free_shipping
-                         },
-                         {
-                             "id": obj[num2].id,
-                             "title": obj[num2].title,
-                             "price": {
-                                 "currency": obj[num2].currency_id,
-                                 "amount": obj[num2].price,
-                                 "decimals": obj[num2].installments.amount
-                             },
-                             "picture": obj[num2].thumbnail,
-                             "condition": obj[num2].condition,
-                             "free_shipping": obj[num2].shipping.free_shipping
-                         },
-                         {
-                             "id": obj[num3].id,
-                             "title": obj[num3].title,
-                             "price": {
-                                 "currency": obj[num3].currency_id,
-                                 "amount": obj[num3].price,
-                                 "decimals": obj[num3].installments.amount
-                             },
-                             "picture": obj[num3].thumbnail,
-                             "condition": obj[num3].condition,
-                             "free_shipping": obj[num3].shipping.free_shipping
-                         }*/
+                         }
                      ]
                  }
              ]
