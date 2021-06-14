@@ -19,7 +19,7 @@ const Search = ({ location }) => {
         setLanguage(input);
         // add query string to URL
 
-        History.push('/items?q=' + input);
+        History.push('/items?search=' + input);
         History.go(0)
         // clear the input
         setInput('');
