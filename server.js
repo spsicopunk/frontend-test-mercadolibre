@@ -127,9 +127,8 @@ app.get('/api/items/:id', (req, res) => {
     })
 });
 
-app.listen(process.env.PORT || 4000, () => {
+const server = app.listen(process.env.PORT || 5000, () => {
     const port = server.address().port;
-    console.log(`Corriendo en puerto ${port}`);
+    console.log(`Express is working on port ${port}`);
 });
-
 
