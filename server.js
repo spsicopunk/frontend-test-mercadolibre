@@ -87,6 +87,8 @@ app.get("/api/items?:query", (req, res) =>{
             })
             return products;
         });
+    }).catch(error => {
+
     })
 })
 
@@ -124,6 +126,8 @@ app.get('/api/items/:id', (req, res) => {
                 description: description
             })
         })
+    }).catch(error => {
+
     })
 });
 
