@@ -2,12 +2,7 @@
   "name": "frontend-test",
   "version": "1.0.0",
   "scripts": {
-    "local": "react-scripts start",
-    "start": "nodemon server.js",
-    "dev": "\"nodemon server.js\" \"webpack -w\" ",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "nodemon server.js"
   },
   "private": true,
   "dependencies": {
