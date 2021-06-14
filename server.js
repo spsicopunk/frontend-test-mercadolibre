@@ -12,15 +12,15 @@ app.use(express.static(__dirname + '/public'));
 
 /*creación de endpoint para busqueda de productos*/
 
-app.get("/api/items/description/:id", async (req, res) =>{
+app.get("/api/items?:id", (req, res) =>{
     const url = `https://api.mercadolibre.com/sites/MLA/search?${req._parsedOriginalUrl.query}`;
      axios.get(url).then(response => {
-        const apiMercadolibre = response.data.results;
-         [apiMercadolibre].forEach(function(obj) {
-             const num0 = 0;
+         console.log(response.data)
+         const apiMercadolibre = response.data.results;
+/*             const num0 = 0;
              const num1 = 1;
              const num2 = 2;
-             const num3 = 3;
+             const num3 = 3;*/
 
              const products = [
                  {
@@ -31,18 +31,18 @@ app.get("/api/items/description/:id", async (req, res) =>{
                      description: [String, String, String],
                      item: [
                          {
-                             "id": obj[num0].id,
-                             "title": obj[num0].title,
+                             "id": "obj[num0].id",
+                             "title": "obj[num0].title",
                              "price": {
-                                 "currency": obj[num0].currency_id,
-                                 "amount": obj[num0].price,
-                                 "decimals": obj[num0].installments.amount
+                                 "currency": "obj[num0].currency_id",
+                                 "amount": "obj[num0].price",
+                                 "decimals": "obj[num0].installments.amount"
                              },
-                             "picture": obj[num0].thumbnail,
-                             "condition": obj[num0].condition,
-                             "free_shipping": obj[num0].shipping.free_shipping
+                             "picture": "obj[num0].thumbnail",
+                             "condition": "obj[num0].condition",
+                             "free_shipping": "obj[num0].shipping.free_shipping"
                          },
-                         {
+/*                         {
                              "id": obj[num1].id,
                              "title": obj[num1].title,
                              "price": {
@@ -77,16 +77,16 @@ app.get("/api/items/description/:id", async (req, res) =>{
                              "picture": obj[num3].thumbnail,
                              "condition": obj[num3].condition,
                              "free_shipping": obj[num3].shipping.free_shipping
-                         }
+                         }*/
                      ]
                  }
              ]
 
-             res.json( {
-                 products: products
-             })
-         });
 
+
+         res.json( {
+             products: products
+         })
     }).catch(error => {
 
     })
