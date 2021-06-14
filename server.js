@@ -9,6 +9,7 @@ app.use(cors())
 app.use(express.static(__dirname + '/public'));
 
 
+
 /*creación de endpoint para busqueda de productos*/
 
 app.get("https://node-express-mercadolibre.herokuapp.com/api/items?q:query", (req, res) =>{
