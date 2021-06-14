@@ -12,10 +12,11 @@ app.use(express.static(__dirname + '/public'));
 
 /*creación de endpoint para busqueda de productos*/
 
-app.get("/api/items?:id", (req, res) =>{
+app.get("/api/items?:query", (req, res) =>{
     const paramID = req._parsedOriginalUrl.query;
     const url = `https://api.mercadolibre.com/sites/MLA/search?q=${paramID}`;
     axios.get(url).then(response => {
+        console.log(response.data.results[0])
         const producto1 = response.data.results[0];
         const producto2 = response.data.results[1];
         const producto3 = response.data.results[2];
@@ -27,8 +28,8 @@ app.get("/api/items?:id", (req, res) =>{
                          name: "sergio",
                          lastname: "ochoa"
                      },
-                     description: [String, String, String],
-                     item: [
+                     "description": [String, String, String],
+                     "item": [
                          {
                              "id": producto1.id,
                              "title": producto1.title,
@@ -81,8 +82,6 @@ app.get("/api/items?:id", (req, res) =>{
                  }
              ]
 
-
-
          res.json( {
              products: products
          })
@@ -130,7 +129,7 @@ app.get('/api/items/:id', (req, res) => {
     })
 });
 
-const server = app.listen(process.env.PORT || 5000, () => {
+const server = app.listen(process.env.PORT || 4000, () => {
     const port = server.address().port;
     console.log(`Express is working on port ${port}`);
 });

@@ -20,7 +20,7 @@ class Items extends Component {
     componentWillMount() {
         const param = History.location.search.substring(3);
         request
-            .get(`http://localhost:4000/api/items?q=${param}`)
+            .get(`https://node-express-mercadolibre.herokuapp.com/api/items?${param}`)
             .end((err, res) => {
                 const products = JSON.parse(res.text).products;
                 this.setState({
