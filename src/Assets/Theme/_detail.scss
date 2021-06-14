@@ -1,0 +1,40 @@
+.detail{
+  @extend .box-primary;
+  @include cont-center-flex(row, start, end);
+  margin: 0 auto 32px;
+  padding: 32px;
+  box-sizing: border-box;
+  .detail_left {
+    width: calc(100% - 220px);
+    .detail_product-img{
+      max-width: 680px;
+      width: 100%;
+      height: 680px;
+      object-fit: cover;
+    }
+    .detail_sub-title{
+        font: $titleDescription;
+        margin-bottom: 32px;
+    }
+    .detail_description{
+      font: $textDescription;
+    }
+  }
+  .detail_right{
+    width: 220px;
+    max-width: 100%;
+    .detail_state{
+      font: $textBreadcrumb;
+      margin-bottom: 16px;
+      text-transform: capitalize;
+    }
+    .detail_title-product{
+      font: $titleBold;
+      margin-bottom: 16px;
+    }
+    .detail_price{
+      font: $jumboTitle;
+      margin-bottom: 16px;
+    }
+  }
+}
