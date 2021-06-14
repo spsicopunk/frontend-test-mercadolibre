@@ -1,7 +1,7 @@
 const axios = require('axios');
 const express = require('express');
 const app = express();
-
+const port = 4000;
 
 const cors = require('cors');
 app.use(cors())
@@ -12,7 +12,7 @@ app.use(express.static(__dirname + '/public'));
 
 /*creación de endpoint para busqueda de productos*/
 
-app.get("https://node-express-mercadolibre.herokuapp.com/api/items?q:query", (req, res) =>{
+app.get("https://node-express-mercadolibre.herokuapp.com/api/items?:query", (req, res) =>{
     const url = `https://api.mercadolibre.com/sites/MLA/search?${req._parsedOriginalUrl.query}`;
     axios.get(url).then(response => {
         const apiMercadolibre = response.data.results;
@@ -127,6 +127,8 @@ app.get('https://node-express-mercadolibre.herokuapp.com/api/items/:id', (req, r
     })
 });
 
-
+app.listen(port, function () {
+    console.log(`Corriendo en puerto ${port}`);
+});
 
 
