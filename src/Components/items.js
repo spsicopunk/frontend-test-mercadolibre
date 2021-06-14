@@ -22,6 +22,7 @@ class Items extends Component {
         request
             .get(`https://node-express-mercadolibre.herokuapp.com/api/items?${param}`)
             .end((err, res) => {
+                console.log(res)
                 const products = JSON.parse(res.text).products;
                 this.setState({
                     products: products[0].item

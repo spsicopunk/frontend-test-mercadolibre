@@ -2,7 +2,6 @@ const axios = require('axios');
 const express = require('express');
 const app = express();
 
-
 const cors = require('cors');
 app.use(cors())
 
@@ -129,8 +128,11 @@ app.get('/api/items/:id', (req, res) => {
     })
 });
 
+
+
+
 const server = app.listen(process.env.PORT || 4000, () => {
     const port = server.address().port;
-    console.log(`Express is working on port ${port}`);
+    console.log(`Corriendo en puerto ${port}`);
 });
 
