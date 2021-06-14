@@ -14,7 +14,7 @@ app.use(express.static(__dirname + '/public'));
 
 app.get("/api/items?:query", (req, res) =>{
     const url = `https://api.mercadolibre.com/sites/MLA/search?${req._parsedOriginalUrl.query}`;
-    axios.get(url).then(response => {
+    await axios.get(url).then(response => {
         const apiMercadolibre = response.data.results;
         [apiMercadolibre].map(function(obj) {
             const num0 = 0;
