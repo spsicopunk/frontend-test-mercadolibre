@@ -13,8 +13,9 @@ app.use(express.static(__dirname + '/public'));
 /*creación de endpoint para busqueda de productos*/
 
 app.get("/api/items?:query", (req, res) =>{
+    (async () =>
     const url = `https://api.mercadolibre.com/sites/MLA/search?${req._parsedOriginalUrl.query}`;
-    await axios.get(url).then(response => {
+     axios.get(url).then(response => {
         const apiMercadolibre = response.data.results;
         [apiMercadolibre].map(function(obj) {
             const num0 = 0;
@@ -90,6 +91,7 @@ app.get("/api/items?:query", (req, res) =>{
     }).catch(error => {
 
     })
+    })();
 })
 
 /*creación de endpoint para detalle de producto*/
