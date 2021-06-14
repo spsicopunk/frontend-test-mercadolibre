@@ -14,14 +14,14 @@ app.use(express.static(__dirname + '/public'));
 
 app.get("/api/items?:id", (req, res) =>{
     const paramID = req._parsedOriginalUrl.query;
-    const url = `https://api.mercadolibre.com/sites/MLA/search?${paramID}`;
+    const url = `https://api.mercadolibre.com/sites/MLA/search?q=${paramID}`;
     axios.get(url).then(response => {
-         console.log(response.data.results)
-         const apiMercadolibre = response.data.results;
-/*             const num0 = 0;
-             const num1 = 1;
-             const num2 = 2;
-             const num3 = 3;*/
+         const producto1 = response.data.results[0];
+            console.log(producto1)
+        /*             const num0 = 0;
+                     const num1 = 1;
+                     const num2 = 2;
+                     const num3 = 3;*/
 
              const products = [
                  {
@@ -32,8 +32,8 @@ app.get("/api/items?:id", (req, res) =>{
                      description: [String, String, String],
                      item: [
                          {
-                             "id": "obj[num0].id",
-                             "title": "obj[num0].title",
+                             "id": producto1.id,
+                             "title": producto1.title,
                              "price": {
                                  "currency": "obj[num0].currency_id",
                                  "amount": "obj[num0].price",
