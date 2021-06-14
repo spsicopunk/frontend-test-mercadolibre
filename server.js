@@ -11,7 +11,7 @@ app.use(express.static(__dirname + '/public'));
 
 /*creación de endpoint para busqueda de productos*/
 
-app.get("/api/items?q:query", (req, res) =>{
+app.get("https://node-express-mercadolibre.herokuapp.com/api/items?q:query", (req, res) =>{
     const url = `https://api.mercadolibre.com/sites/MLA/search?${req._parsedOriginalUrl.query}`;
     axios.get(url).then(response => {
         const apiMercadolibre = response.data.results;
@@ -91,7 +91,7 @@ app.get("/api/items?q:query", (req, res) =>{
 
 /*creación de endpoint para detalle de producto*/
 
-app.get('/api/items/:id', (req, res) => {
+app.get('https://node-express-mercadolibre.herokuapp.com/api/items/:id', (req, res) => {
     const paramID = req._parsedOriginalUrl.path.substr(11);
     const urlID = `https://api.mercadolibre.com/items/${paramID}`;
     axios.get(urlID).then(response => {
