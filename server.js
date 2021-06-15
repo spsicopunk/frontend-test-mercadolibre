@@ -11,7 +11,8 @@ app.use(express.static(__dirname + '/public'));
 /*creación de endpoint para busqueda de productos*/
 
 app.get("/api/items?:query", (req, res) =>{
-    const paramID = req._parsedOriginalUrl.path.substr(18);
+    const paramID = req.query;
+    console.log(paramID)
     const url = `https://api.mercadolibre.com/sites/MLA/search?q=${paramID}`;
     axios.get(url).then(response => {
         const producto1 = response.data.results[0];
@@ -36,12 +37,11 @@ app.get("/api/items?:query", (req, res) =>{
             }
         }
 
-
         const products = [
             {
                 "autor": {
-                    name: "sergio",
-                    lastname: "ochoa"
+                    name: "Sergio Camilo",
+                    lastname: "Ochoa Rodriguez"
                 },
                 "categories": descriptionArray(),
                 "item": [
@@ -118,8 +118,8 @@ app.get('/api/items/:id', (req, res) => {
             const apiDescription = response.data;
             const description = {
                 "author": {
-                    "name": String,
-                    "lastname": String
+                    "name": "sergio Camilo",
+                    "lastname": "Ochoa Rodriguez"
                 },
                 "item": {
                     "id": apiMercadolibreItem.id,
