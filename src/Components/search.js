@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import History from "../Components/history"
+import History from "./history"
 
 //Images
 import logo from "../Assets/Img/logo.png";

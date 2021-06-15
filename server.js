@@ -11,7 +11,7 @@ app.use(express.static(__dirname + '/public'));
 /*creación de endpoint para busqueda de productos*/
 
 app.get("/api/items?:query", (req, res) =>{
-    const paramID = req._parsedOriginalUrl.path.substr(18);
+    const paramID = req._parsedOriginalUrl.query;
     const url = `https://api.mercadolibre.com/sites/MLA/search?q=${paramID}`;
     axios.get(url).then(response => {
         const producto1 = response.data.results[0];
@@ -24,24 +24,23 @@ app.get("/api/items?:query", (req, res) =>{
 
         const descriptionArray = function(){
             if (filters != null){
-                const catogory1 = filters.values[0].path_from_root[0].name;
-                const catogory2 = filters.values[0].path_from_root[1].name;
-                const categoryList = [catogory1, catogory2, paramID];
+                const category1 = filters.values[0].path_from_root[0].name;
+                const category2 = filters.values[0].path_from_root[1].name;
+                const categoryList = [category1, category2, paramID];
                 return categoryList
             }else{
-                const catogorys1 = filters_available.values[0].name;
-                const catogorys2 = filters_available.values[1].name;
-                const categorysList = [catogorys1,catogorys2, paramID];
+                const categorys1 = filters_available.values[0].name;
+                const categorys2 = filters_available.values[1].name;
+                const categorysList = [categorys1,categorys2, paramID];
                 return categorysList
             }
         }
 
-
         const products = [
             {
                 "autor": {
-                    name: "sergio",
-                    lastname: "ochoa"
+                    name: "Sergio Camilo",
+                    lastname: "Ochoa Rodriguez"
                 },
                 "categories": descriptionArray(),
                 "item": [
@@ -118,8 +117,8 @@ app.get('/api/items/:id', (req, res) => {
             const apiDescription = response.data;
             const description = {
                 "author": {
-                    "name": String,
-                    "lastname": String
+                    "name": "sergio Camilo",
+                    "lastname": "Ochoa Rodriguez"
                 },
                 "item": {
                     "id": apiMercadolibreItem.id,

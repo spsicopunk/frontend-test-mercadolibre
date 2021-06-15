@@ -21,20 +21,20 @@ class Results extends Component {
     }
 
     componentWillMount() {
-        const param = History.location.search.substring(3);
-        const url = `http://localhost:4000/api/items?q=${param}`;
+        const param = History.location.search.substring(8);
+        const url = `https://node-express-mercadolibre.herokuapp.com/api/items?${param}`;
+        console.log(url)
         axios.get(url).then(response => {
+            console.log(response.data.products[0].item)
             this.setState({
                 productItem: response.data.products[0].item,
                 miga: response.data.products[0].categories
             });
-            localStorage.setItem('pass', this.state.miga)
         })
 
     }
 
     render(){
-        const param = History.location.search.substring(3);
         var itemLoop = this.state.productItem.map((res, i) => {
         return  <Items
                     key={i}
