@@ -30,7 +30,6 @@ class Results extends Component {
                 productItem: response.data.products[0].item,
                 miga: response.data.products[0].categories
             });
-            localStorage.setItem('pass', this.state.miga)
         })
 
     }
