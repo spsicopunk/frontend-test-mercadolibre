@@ -15,7 +15,8 @@ class Results extends Component {
     constructor() {
         super();
         this.state = {
-            productItem: []
+            productItem: [],
+            miga: []
         }
     }
 
@@ -24,10 +25,12 @@ class Results extends Component {
         const url = `http://localhost:4000/api/items?q=${param}`;
         axios.get(url).then(response => {
             this.setState({
-                productItem: response.data.products[0].item
+                productItem: response.data.products[0].item,
+                miga: response.data.products[0].categories
             });
-
+            localStorage.setItem('pass', this.state.miga)
         })
+
     }
 
     render(){
@@ -43,10 +46,10 @@ class Results extends Component {
                     condition={res.condition}
                 />
         });
-        return (
+         return (
             <div className="results">
                 <Search />
-                <Breadcrumb param={param}></Breadcrumb>
+                <Breadcrumb param={this.state.miga}></Breadcrumb>
                 <div className="products">
                     {itemLoop}
                 </div>

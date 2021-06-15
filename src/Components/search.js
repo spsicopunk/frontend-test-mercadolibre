@@ -4,9 +4,9 @@ import History from "../Components/history"
 //Images
 import logo from "../Assets/Img/logo.png";
 import SearchIcon from "../Assets/Img/search.png";
-import Breadcrumb from "./breadcrumb";
 
-const Search = ({ tags }) => {
+
+const Search = () => {
 
     const [language, setLanguage] = useState('');
     const [input, setInput] = useState('');

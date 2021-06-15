@@ -16,6 +16,7 @@ class DetailProduct extends Component {
 
     componentWillMount() {
         const param = History.location.pathname;
+        console.log(param)
         const url = `http://localhost:4000/api${param}`;
         axios.get(url).then(response => {
             /*console.log(response.data)*/
@@ -30,7 +31,7 @@ class DetailProduct extends Component {
         return (
             <div className="detail-product">
                 <Search />
-                <Breadcrumb param={this.state.description.id}></Breadcrumb>
+                <Breadcrumb param={[this.state.description.title]}></Breadcrumb>
                 <Detail
                     id={this.state.description.id}
                     picture={this.state.description.picture}

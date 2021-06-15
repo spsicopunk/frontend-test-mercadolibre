@@ -9,9 +9,9 @@ function Items ({id, picture, title, price, free_shipping, condition}) {
             <div className="products_item" rel={id}>
                 <Link to={`/items/${id}`}></Link>
                 <div className="products_left">
-                    <img src={picture} className="products_portrait" alt="portrait product"/>
+                    <img src={picture} className="products_portrait" alt={title}/>
                     <div className="products_box-text">
-                        <h3 className="products_title">$ {price} <img hidden={!free_shipping} className="products_add-on" src={Addon} alt="portrait product"/>
+                        <h3 className="products_title">$ {price} <img hidden={!free_shipping} className="products_add-on" src={Addon} alt={Addon}/>
                         </h3>
                         <p className="products_description">{title}</p>
                     </div>
