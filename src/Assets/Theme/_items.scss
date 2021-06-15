@@ -20,6 +20,10 @@
       height: 180px;
       margin-right: 16px;
       object-fit: cover;
+      @media only screen and (max-width: 768px) {
+        min-width: 120px;
+        object-fit: cover;
+      }
     }
     .products_box-text{
       .products_title{
@@ -43,6 +47,9 @@
     .products_left{
       display: flex;
       width: calc(100% - 162px);
+      @media only screen and (max-width: 768px) {
+        width: 100%;
+      }
     }
     .products_right{
       width: 120px;

@@ -4,17 +4,25 @@
   margin: 0 auto 32px;
   padding: 32px;
   box-sizing: border-box;
+  @media only screen and (max-width: 768px) {
+    flex-direction: column-reverse;
+  }
   .detail_left {
     width: calc(100% - 220px);
+    padding-right: 32px;
+    box-sizing: border-box;
+    @media only screen and (max-width: 768px) {
+      width: 100%;
+    }
     .detail_product-img{
       max-width: 680px;
       width: 100%;
       height: 680px;
-      object-fit: cover;
+      object-fit: contain;
     }
     .detail_sub-title{
         font: $titleDescription;
-        margin-bottom: 32px;
+        margin: 32px 0px;
     }
     .detail_description{
       font: $textDescription;
@@ -23,6 +31,9 @@
   .detail_right{
     width: 220px;
     max-width: 100%;
+    @media only screen and (max-width: 768px) {
+      width: 100%;
+    }
     .detail_state{
       font: $textBreadcrumb;
       margin-bottom: 16px;
