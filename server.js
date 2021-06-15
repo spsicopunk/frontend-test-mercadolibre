@@ -8,18 +8,34 @@ app.use(cors())
 app.use(express.static(__dirname + '/public'));
 
 
-
 /*creación de endpoint para busqueda de productos*/
 
 app.get("/api/items?:query", (req, res) =>{
     const paramID = req._parsedOriginalUrl.path.substr(18);
     const url = `https://api.mercadolibre.com/sites/MLA/search?q=${paramID}`;
     axios.get(url).then(response => {
-        console.log(response.data.results[0])
         const producto1 = response.data.results[0];
         const producto2 = response.data.results[1];
         const producto3 = response.data.results[2];
         const producto4 = response.data.results[3];
+
+        const filters = response.data.filters[0];
+        const filters_available = response.data.available_filters[0];
+
+        const descriptionArray = function(){
+            if (filters != null){
+                const catogory1 = filters.values[0].path_from_root[0].name;
+                const catogory2 = filters.values[0].path_from_root[1].name;
+                const categoryList = [catogory1, catogory2, paramID];
+                return categoryList
+            }else{
+                const catogorys1 = filters_available.values[0].name;
+                const catogorys2 = filters_available.values[1].name;
+                const categorysList = [catogorys1,catogorys2, paramID];
+                return categorysList
+            }
+        }
+
 
         const products = [
             {
@@ -27,7 +43,7 @@ app.get("/api/items?:query", (req, res) =>{
                     name: "sergio",
                     lastname: "ochoa"
                 },
-                "description": [String, String, String],
+                "categories": descriptionArray(),
                 "item": [
                     {
                         "id": producto1.id,
@@ -84,6 +100,7 @@ app.get("/api/items?:query", (req, res) =>{
         res.json( {
             products: products
         })
+
     }).catch(error => {
 
     })
@@ -133,4 +150,3 @@ const server = app.listen(process.env.PORT || 4000, () => {
     const port = server.address().port;
     console.log(`Corriendo en puerto ${port}`);
 });
-

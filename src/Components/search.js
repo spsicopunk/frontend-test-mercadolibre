@@ -4,29 +4,27 @@ import History from "../Components/history"
 //Images
 import logo from "../Assets/Img/logo.png";
 import SearchIcon from "../Assets/Img/search.png";
+import Breadcrumb from "./breadcrumb";
 
-const Search = ({ location }) => {
+const Search = ({ tags }) => {
 
     const [language, setLanguage] = useState('');
     const [input, setInput] = useState('');
 
 
-    // function for handling form submit
+    /*submit de formulario con envio de parametros*/
     const submitAction = (e) => {
-        // prevents default, so page won't reload on form submit
+        /*prevenir evento submit*/
         e.preventDefault();
-        // set language in state
         setLanguage(input);
-        // add query string to URL
-
+        /*agregar la url al historial*/
         History.push('/items?search=' + input);
         History.go(0)
-        // clear the input
+        /*Limpiar el input*/
         setInput('');
     };
 
     return (
-        <>
             <section className="search_component">
                 <div className="search-box">
                     <header className="search-box_header">
@@ -41,17 +39,7 @@ const Search = ({ location }) => {
                             </form>
                     </header>
                 </div>
-                <div className="breadcrumbs">
-                    <ul className="breadcrumbs_list">
-                        <li>Electronica, Audio y Video <span className="breadcrumbs_add-on">></span></li>
-                        <li>iPod <span className="breadcrumbs_add-on">></span></li>
-                        <li>Reproductores <span className="breadcrumbs_add-on">></span></li>
-                        <li>iPod touch <span className="breadcrumbs_add-on">></span></li>
-                        <li className="bread_active">{language}</li>
-                    </ul>
-                </div>
             </section>
-        </>
     );
 };
 

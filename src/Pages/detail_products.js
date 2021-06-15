@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import Search from "../Components/search";
 import Detail from "../Components/detail";
 import History from "../Components/history";
-import request from "superagent";
 import axios from "axios";
+import Breadcrumb from "../Components/breadcrumb";
 
 class DetailProduct extends Component {
     constructor() {
@@ -18,6 +18,7 @@ class DetailProduct extends Component {
         const param = History.location.pathname;
         const url = `http://localhost:4000/api${param}`;
         axios.get(url).then(response => {
+            /*console.log(response.data)*/
             this.setState({
                 description: response.data.description.item,
                 price: response.data.description.item.price
@@ -29,6 +30,7 @@ class DetailProduct extends Component {
         return (
             <div className="detail-product">
                 <Search />
+                <Breadcrumb param={this.state.description.id}></Breadcrumb>
                 <Detail
                     id={this.state.description.id}
                     picture={this.state.description.picture}

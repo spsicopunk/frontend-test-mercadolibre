@@ -63,8 +63,12 @@
         margin-left: 5px;
         font-family: monospace;
       }
-      &.bread_active{
+      &.bread_active, &:last-child{
         font: $textBreadcrumbActive;
+        text-transform: capitalize;
+      }
+      &:last-child span{
+        display: none;
       }
     }
   }
