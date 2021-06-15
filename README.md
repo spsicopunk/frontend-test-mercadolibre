@@ -1,6 +1,26 @@
-# Getting Started with Create React App
+# Buscador Mercadolibre React js
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Disponible en:
+
+https://mercadolibre-apps.web.app/
+
+## Este proyecto está construido con la siguiente arquitectura:
+
+## `Frontend:` 
+
+- Se uso la guia de estilos ofrecida por mercadolibre y adicional se uso Adobe Photoshop para calcular dimensiones extra.
+- Trabajo con `SASS` para reducir y dinamizar los estios CSS
+- Creación de tema para estandarizar los componentes
+- Uso de metodologia `BEM` que divide la interfaz de usuario en bloques independientes para crear componentes escalables y reutilizables
+- Busqueda y uso de la tipografia `(Proxima-Nova)`
+- Diseño web Adaptable `(Responsive Design)`
+- Cambio de favicon por el de mercadolibre
+
+## `Backend:` 
+
+- Creación de backend con NodeJS y Express para crear y consumir endpoint desde el frontend
+- Subida de proyecto con Google Firebase 
+- Exposición de endpoints públicos con Heroku
 
 ## Available Scripts
 
