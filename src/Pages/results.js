@@ -22,8 +22,9 @@ class Results extends Component {
 
     componentWillMount() {
         const param = History.location.search.substring(3);
-        const url = `http://localhost:4000/api/items?q=${param}`;
+        const url = `https://node-express-mercadolibre.herokuapp.com/api/items?q=${param}`;
         axios.get(url).then(response => {
+            console.log(response)
             this.setState({
                 productItem: response.data.products[0].item,
                 miga: response.data.products[0].categories

@@ -17,7 +17,7 @@ class DetailProduct extends Component {
     componentWillMount() {
         const param = History.location.pathname;
         console.log(param)
-        const url = `http://localhost:4000/api${param}`;
+        const url = `https://node-express-mercadolibre.herokuapp.com/api${param}`;
         axios.get(url).then(response => {
             /*console.log(response.data)*/
             this.setState({
