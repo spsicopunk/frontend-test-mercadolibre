@@ -2,7 +2,7 @@
 
 Disponible en:
 
-https://mercadolibre-apps.web.app/
+https://mercado-libre-apps.web.app/
 
 ## Este proyecto está construido con la siguiente arquitectura:
 
